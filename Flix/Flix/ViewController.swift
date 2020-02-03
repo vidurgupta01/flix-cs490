@@ -77,5 +77,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         task.resume()
     }
     
+    
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("Loading detail screen...")
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = tableview.indexPath(for: cell)!
+        let movie = movies[indexPath.row]
+        
+        let detailsVC = segue.destination as! MovieDetailViewController
+        detailsVC.movie = movie
+    }
+    
+    
 
 }
